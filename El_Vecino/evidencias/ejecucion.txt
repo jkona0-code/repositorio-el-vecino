@@ -1,0 +1,19 @@
+test_01_total (__main__.Checks.test_01_total) ... ok
+test_02_empty_negative (__main__.Checks.test_02_empty_negative) ... ok
+test_03_sale (__main__.Checks.test_03_sale) ... ok
+test_04_insufficient (__main__.Checks.test_04_insufficient) ... ok
+test_05_sql_injection (__main__.Checks.test_05_sql_injection) ... ok
+test_06_roles (__main__.Checks.test_06_roles) ... ok
+test_07_password (__main__.Checks.test_07_password) ... ok
+test_08_rollback (__main__.Checks.test_08_rollback) ... ok
+test_09_server_price (__main__.Checks.test_09_server_price) ... ok
+test_10_audit (__main__.Checks.test_10_audit) ... ok
+test_11_concurrency (__main__.Checks.test_11_concurrency) ... ok
+test_12_throttle (__main__.Checks.test_12_throttle) ... ok
+test_13_http (__main__.Checks.test_13_http) ... ok
+test_14_before_after (__main__.Checks.test_14_before_after) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 19.061s
+
+OK

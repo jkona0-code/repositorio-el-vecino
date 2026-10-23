@@ -1,0 +1,13 @@
+@echo off
+cd /d "%~dp0"
+where py >nul 2>nul
+if %errorlevel% equ 0 (
+  py -3 test_app.py
+) else (
+  if exist "%USERPROFILE%\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" (
+    "%USERPROFILE%\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" test_app.py
+  ) else (
+    python test_app.py
+  )
+)
+pause

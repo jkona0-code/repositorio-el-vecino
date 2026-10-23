@@ -1,0 +1,135 @@
+{
+  "fecha": "2026-10-23T17:58:13.848969-03:00",
+  "tests": 14,
+  "failures": 0,
+  "errors": 0,
+  "evidencias": [
+    {
+      "id": "PU-01",
+      "fecha": "2026-10-23T17:57:55-03:00",
+      "resultado_obtenido": "2×1500 + 1×2000 = 5000 CLP",
+      "estado": "APROBADO",
+      "prueba": "test_01_total"
+    },
+    {
+      "id": "PU-02",
+      "fecha": "2026-10-23T17:57:56-03:00",
+      "resultado_obtenido": "Venta vacía, negativa, cero y fraccionaria rechazadas; 0 ventas",
+      "estado": "APROBADO",
+      "prueba": "test_02_empty_negative"
+    },
+    {
+      "id": "PI-01",
+      "fecha": "2026-10-23T17:57:57-03:00",
+      "resultado_obtenido": "Venta de 3: stock 10→7, total 4500, 1 venta",
+      "estado": "APROBADO",
+      "prueba": "test_03_sale"
+    },
+    {
+      "id": "PI-02",
+      "fecha": "2026-10-23T17:57:58-03:00",
+      "resultado_obtenido": "Stock 2, solicitud 5: rechazo; stock=2 y ventas=0",
+      "estado": "APROBADO",
+      "prueba": "test_04_insufficient"
+    },
+    {
+      "id": "PS-01",
+      "fecha": "2026-10-23T17:58:00-03:00",
+      "resultado_obtenido": "Inyección en usuario rechazada; credencial válida aceptada",
+      "estado": "APROBADO",
+      "prueba": "test_05_sql_injection"
+    },
+    {
+      "id": "PS-02",
+      "fecha": "2026-10-23T17:58:01-03:00",
+      "resultado_obtenido": "Cajero rechazado y administrador autorizado por servidor",
+      "estado": "APROBADO",
+      "prueba": "test_06_roles"
+    },
+    {
+      "id": "PS-03",
+      "fecha": "2026-10-23T17:58:02-03:00",
+      "resultado_obtenido": "PBKDF2-SHA256, 600000 iteraciones; salt diferente; clave errónea rechazada",
+      "estado": "APROBADO",
+      "prueba": "test_07_password"
+    },
+    {
+      "id": "PI-03",
+      "fecha": "2026-10-23T17:58:03-03:00",
+      "resultado_obtenido": "Fallo en segundo ítem revierte primer descuento, venta y detalles",
+      "estado": "APROBADO",
+      "prueba": "test_08_rollback"
+    },
+    {
+      "id": "PS-04",
+      "fecha": "2026-10-23T17:58:04-03:00",
+      "resultado_obtenido": "Total 3000 calculado con precio de BD; API no recibe precio del navegador",
+      "estado": "APROBADO",
+      "prueba": "test_09_server_price"
+    },
+    {
+      "id": "PS-05",
+      "fecha": "2026-10-23T17:58:05-03:00",
+      "resultado_obtenido": "Venta genera auditoría con usuario y acción, sin contraseñas",
+      "estado": "APROBADO",
+      "prueba": "test_10_audit"
+    },
+    {
+      "id": "PI-04",
+      "fecha": "2026-10-23T17:58:07-03:00",
+      "resultado_obtenido": "Dos ventas concurrentes sobre stock 2: una aprobada, otra rechazada; stock=0",
+      "estado": "APROBADO",
+      "prueba": "test_11_concurrency"
+    },
+    {
+      "id": "PS-06",
+      "fecha": "2026-10-23T17:58:09-03:00",
+      "resultado_obtenido": "Tras 5 fallos se bloquea temporalmente la cuenta",
+      "estado": "APROBADO",
+      "prueba": "test_12_throttle"
+    },
+    {
+      "id": "HTTP-01",
+      "fecha": "2026-10-23T17:58:11-03:00",
+      "resultado_obtenido": "Login HTTP crea sesión; GET /admin con cajero devuelve 403",
+      "estado": "APROBADO",
+      "prueba": "test_13_http"
+    },
+    {
+      "id": "HTTP-02",
+      "fecha": "2026-10-23T17:58:11-03:00",
+      "resultado_obtenido": "POST sin CSRF devuelve 403 y no registra venta",
+      "estado": "APROBADO",
+      "prueba": "test_13_http"
+    },
+    {
+      "id": "HTTP-03",
+      "fecha": "2026-10-23T17:58:12-03:00",
+      "resultado_obtenido": "Venta HTTP total 5000, stock 22; cookie HttpOnly; CSP presente",
+      "estado": "APROBADO",
+      "prueba": "test_13_http"
+    },
+    {
+      "id": "HTTP-04",
+      "fecha": "2026-10-23T17:58:12-03:00",
+      "resultado_obtenido": "Cliente con etiqueta script se presenta escapado, sin ejecución",
+      "estado": "APROBADO",
+      "prueba": "test_13_http"
+    },
+    {
+      "id": "HTTP-05",
+      "fecha": "2026-10-23T17:58:12-03:00",
+      "resultado_obtenido": "Sesión con inactividad superior a 900 segundos expira",
+      "estado": "APROBADO",
+      "prueba": "test_13_http"
+    },
+    {
+      "id": "AD-01",
+      "fecha": "2026-10-23T17:58:13-03:00",
+      "resultado_obtenido": "Baseline didáctico reproduce 4 defectos: SQLi, texto plano, permiso abierto y descuento parcial; correcciones verificadas en PS-01/02/03 y PI-03",
+      "estado": "APROBADO",
+      "prueba": "test_14_before_after"
+    }
+  ],
+  "fallos": []
+}

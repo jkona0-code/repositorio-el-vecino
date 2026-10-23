@@ -1,0 +1,19 @@
+﻿id,fecha,resultado_obtenido,estado,prueba
+PU-01,2026-10-23T17:57:55-03:00,2×1500 + 1×2000 = 5000 CLP,APROBADO,test_01_total
+PU-02,2026-10-23T17:57:56-03:00,"Venta vacía, negativa, cero y fraccionaria rechazadas; 0 ventas",APROBADO,test_02_empty_negative
+PI-01,2026-10-23T17:57:57-03:00,"Venta de 3: stock 10→7, total 4500, 1 venta",APROBADO,test_03_sale
+PI-02,2026-10-23T17:57:58-03:00,"Stock 2, solicitud 5: rechazo; stock=2 y ventas=0",APROBADO,test_04_insufficient
+PS-01,2026-10-23T17:58:00-03:00,Inyección en usuario rechazada; credencial válida aceptada,APROBADO,test_05_sql_injection
+PS-02,2026-10-23T17:58:01-03:00,Cajero rechazado y administrador autorizado por servidor,APROBADO,test_06_roles
+PS-03,2026-10-23T17:58:02-03:00,"PBKDF2-SHA256, 600000 iteraciones; salt diferente; clave errónea rechazada",APROBADO,test_07_password
+PI-03,2026-10-23T17:58:03-03:00,"Fallo en segundo ítem revierte primer descuento, venta y detalles",APROBADO,test_08_rollback
+PS-04,2026-10-23T17:58:04-03:00,Total 3000 calculado con precio de BD; API no recibe precio del navegador,APROBADO,test_09_server_price
+PS-05,2026-10-23T17:58:05-03:00,"Venta genera auditoría con usuario y acción, sin contraseñas",APROBADO,test_10_audit
+PI-04,2026-10-23T17:58:07-03:00,"Dos ventas concurrentes sobre stock 2: una aprobada, otra rechazada; stock=0",APROBADO,test_11_concurrency
+PS-06,2026-10-23T17:58:09-03:00,Tras 5 fallos se bloquea temporalmente la cuenta,APROBADO,test_12_throttle
+HTTP-01,2026-10-23T17:58:11-03:00,Login HTTP crea sesión; GET /admin con cajero devuelve 403,APROBADO,test_13_http
+HTTP-02,2026-10-23T17:58:11-03:00,POST sin CSRF devuelve 403 y no registra venta,APROBADO,test_13_http
+HTTP-03,2026-10-23T17:58:12-03:00,"Venta HTTP total 5000, stock 22; cookie HttpOnly; CSP presente",APROBADO,test_13_http
+HTTP-04,2026-10-23T17:58:12-03:00,"Cliente con etiqueta script se presenta escapado, sin ejecución",APROBADO,test_13_http
+HTTP-05,2026-10-23T17:58:12-03:00,Sesión con inactividad superior a 900 segundos expira,APROBADO,test_13_http
+AD-01,2026-10-23T17:58:13-03:00,"Baseline didáctico reproduce 4 defectos: SQLi, texto plano, permiso abierto y descuento parcial; correcciones verificadas en PS-01/02/03 y PI-03",APROBADO,test_14_before_after

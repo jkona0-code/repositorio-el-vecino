@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <h1>Panel de Control</h1>
+    <p>Bienvenido/a, <strong>{{ session.get('nombre') }}</strong>
+       <span class="badge {% if session.get('rol')=='administrador' %}badge-admin{% else %}badge-cajero{% endif %}">
+           {{ session.get('rol', '').capitalize() }}
+       </span>
+    </p>
+    <div class="dashboard-grid">
+        <div class="stat-card">
+            <div class="stat-value">{{ stats.productos }}</div>
+            <div class="stat-label">Productos</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ stats.ventas_hoy }}</div>
+            <div class="stat-label">Ventas Hoy</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">${{ '{:,.0f}'.format(stats.total_hoy) }}</div>
+            <div class="stat-label">Ingresos Hoy</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ stats.stock_bajo }}</div>
+            <div class="stat-label">Stock Bajo (&lt;10)</div>
+        </div>
+    </div>
+</div>
+
+{% if productos_bajo_stock %}
+<div class="card">
+    <h2>⚠️ Productos con Stock Bajo</h2>
+    <table>
+        <tr><th>Código</th><th>Producto</th><th>Stock</th></tr>
+        {% for p in productos_bajo_stock %}
+        <tr>
+            <td>{{ p.codigo }}</td>
+            <td>{{ p.nombre }}</td>
+            <td class="stock-low">{{ p.stock }} uds.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endif %}
+{% endblock %}

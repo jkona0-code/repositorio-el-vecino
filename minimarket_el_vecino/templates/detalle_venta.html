@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card" style="max-width:700px; margin:0 auto;">
+    <h1>Detalle de Venta #{{ venta.id }}</h1>
+    <p><strong>Fecha:</strong> {{ venta.fecha }}</p>
+    <p><strong>Cajero:</strong> {{ venta.cajero_nombre }}</p>
+    <p><strong>Cliente:</strong> {{ venta.cliente_nombre or 'No registrado' }}</p>
+    <p><strong>Método de pago:</strong> {{ venta.metodo_pago.capitalize() }}</p>
+    <table>
+        <tr><th>Producto</th><th>Precio unit.</th><th>Cantidad</th><th>Subtotal</th></tr>
+        {% for d in detalles %}
+        <tr>
+            <td>{{ d.producto_nombre }}</td>
+            <td>${{ '{:,.0f}'.format(d.precio_unitario) }}</td>
+            <td>{{ d.cantidad }}</td>
+            <td>${{ '{:,.0f}'.format(d.subtotal) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div style="text-align:right; font-size:1.3rem; margin-top:15px; color:#1a5276;">
+        <strong>Total: ${{ '{:,.0f}'.format(venta.total) }}</strong>
+    </div>
+    <br>
+    <a href="{{ url_for('ventas') }}" class="btn btn-primary">← Volver</a>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h1>Gestión de Productos</h1>
+        {% if session.get('rol') == 'administrador' %}
+        <a href="{{ url_for('nuevo_producto') }}" class="btn btn-success">+ Nuevo Producto</a>
+        {% endif %}
+    </div>
+    <table>
+        <tr>
+            <th>Código</th><th>Nombre</th><th>Precio</th>
+            <th>Stock</th><th>Categoría</th>
+            {% if session.get('rol') == 'administrador' %}<th>Acciones</th>{% endif %}
+        </tr>
+        {% for p in productos %}
+        <tr>
+            <td>{{ p.codigo }}</td>
+            <td>{{ p.nombre }}</td>
+            <td>${{ '{:,.0f}'.format(p.precio) }}</td>
+            <td class="{% if p.stock < 10 %}stock-low{% else %}stock-ok{% endif %}">
+                {{ p.stock }}
+            </td>
+            <td>{{ p.categoria }}</td>
+            {% if session.get('rol') == 'administrador' %}
+            <td>
+                <a href="{{ url_for('editar_producto', id=p.id) }}" class="btn btn-primary btn-sm">Editar</a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
